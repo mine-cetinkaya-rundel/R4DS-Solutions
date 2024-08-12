@@ -17,7 +17,7 @@ library(tidyverse)
 
 ## 3.5 Exercises {.unnumbered}
 
-1.  The variable is called `my_variable` while the next line calls it `my_varıable`, with an an `ı` (`i` without a dot) in the variable name.
+1.  The variable is called `my_variable` while the next line calls it `my_varıable`, with an `ı` (`i` without a dot) in the variable name.
     Therefore the error is due to the mismatch in variable names.
 
 2.  The corrected code is provided below.
