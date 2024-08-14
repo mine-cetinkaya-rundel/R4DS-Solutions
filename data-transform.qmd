@@ -208,7 +208,7 @@ flights |>
       geom_smooth()
     ```
 
-4.  Supplying a negative value arranges the data frame in either ascending (with `slice_min()`) or descending (with `slice_max()`) order, but it doesn't actually slice the data frame for the lowest/highest values of the given variable.
+4.  Supplying a negative value arranges the data frame in either ascending (with `slice_min()`) or descending (with `slice_max()`) order as expected, but it slices off |n| records instead of keeping n records.
 
     ```{r}
     flights |> 
