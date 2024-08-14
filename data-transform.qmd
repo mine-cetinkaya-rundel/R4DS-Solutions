@@ -193,8 +193,7 @@ flights |>
     ```{r}
     flights |> 
       group_by(dest) |> 
-      arrange(dest, desc(dep_delay)) |>
-      slice_head(n = 5) |>
+      slice_max(dep_delay, n=5, with_ties=FALSE) |> 
       relocate(dest, dep_delay)
     ```
 
