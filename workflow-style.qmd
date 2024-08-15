@@ -42,7 +42,8 @@ library(nycflights13)
       group_by(flight) |>
       summarize(
         delay = mean(arr_delay, na.rm = TRUE), 
-        cancelled = sum(is.na(arr_delay)), n = n()
+        cancelled = sum(is.na(arr_delay)), 
+        n = n()
       ) |>
       filter(n > 10)
     ```
