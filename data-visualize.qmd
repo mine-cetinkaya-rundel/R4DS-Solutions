@@ -138,8 +138,7 @@ library(palmerpenguins)
 
 3.  It determines the number of bins (bars) in a histogram.
 
-4.  Below are histograms with three different binwidths.
-    I think a binwidth of 0.10 shows reveals the most interesting patterns.
+4.  Below are histograms with three different binwidth values. I think a binwidth of 0.10 reveals the most interesting pattern. Diamonds tend to be cut to achieve a full carat weight to maximize profits.
 
     ```{r}
     #| layout-ncol: 3
@@ -156,7 +155,7 @@ library(palmerpenguins)
 
 ## 2.5.5 Exercises {.unnumbered}
 
-1.  `manufacturer`, `class`, `fl`, `drv`, `model`, and `trans` are all categorical variables. `displ`, `year`, `cyl`, `cty`, and `hwy` are all numerical variables. You can run `glimpse(mpg)` or `?mpg` to see a list of the variables.
+1.  `manufacturer`, `model`, `trans`, `drv`, `fl`, and `class` are all categorical variables. `displ`, `year`, `cyl`, `cty`, and `hwy` are all numerical variables. You can run `glimpse(mpg)` or `?mpg` to see a list of the variables.
 2.  The difference is a numerical variable doesn't work with shape aesthetic but a categorical variable does. Also, the color scale is different for numerical and categorical variables.
 
     ```{r}
@@ -209,6 +208,24 @@ library(palmerpenguins)
       aes(x = bill_depth_mm, y = bill_length_mm, color = species)
     ) + 
       geom_point()
+    ```
+This is an example of Simpson's paradox. It seems like there is a slight negative correlation between the two variables but the trend reverses when the data is split per species. 
+
+    ```{r}
+    ggplot(
+      penguins,
+      aes(x = bill_depth_mm, y = bill_length_mm)
+    ) + 
+      geom_point() +
+      geom_smooth(method = 'lm')
+    
+    ggplot(
+      penguins,
+      aes(x = bill_depth_mm, y = bill_length_mm, colour = species)
+    ) + 
+      geom_point() +
+      facet_wrap(~species) +
+      geom_smooth(method = 'lm')
     ```
 
 6.  The code provided in the exercise yields two separate legends because the legend for `color` is renamed to `"Species"` but the legend for shape is not, and is named `"species"` by default instead. To fix it, we would need to explicitly rename the shape legend as well.
